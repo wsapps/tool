@@ -717,7 +717,6 @@ public final class ZipPackage extends OPCPackage {
             // Save content type part.
             LOG.atDebug().log("Save content types part");
             Document contentTypeDocument = this.contentTypeManager.createDocument();
-            // TODO 1
             String contentTypeDocumentName = "[Content_Types].xml";
 			InputStream contentTypeDocumentIS = new ByteArrayInputStream(XmlUtil.toStr(contentTypeDocument).getBytes(StandardCharsets.UTF_8));
 			inputStreamMap.put(contentTypeDocumentName, contentTypeDocumentIS);
@@ -728,7 +727,6 @@ public final class ZipPackage extends OPCPackage {
 			
             LOG.atDebug().log("Save package relationships");
             
-            // TODO 2
             Document relationshipPartDocument = marshallRelationshipPart(relationships, PackagingURIHelper.PACKAGE_RELATIONSHIPS_ROOT_PART_NAME);
             String relationshipPartDocumentName = PackagingURIHelper.PACKAGE_RELATIONSHIPS_ROOT_PART_NAME.getURI().toASCIIString();
 			//System.out.println("relationshipPartDocumentName:" + relationshipPartDocumentName);
@@ -829,7 +827,6 @@ public final class ZipPackage extends OPCPackage {
 			// System.out.println("partName:" + partName);
 			
 			if (part instanceof MemoryPackagePart || part instanceof ZipPackagePart) {
-				// TODO 4
 				//FileUtil.writeFromStream(part.getInputStream(), TEMP_PATH + partName);
 				
 				//InputStream packagePartIS = new ByteArrayInputStream(XmlUtil.toStr(relationshipPartDocument).getBytes(StandardCharsets.UTF_8));
@@ -838,7 +835,6 @@ public final class ZipPackage extends OPCPackage {
 			} else if (part instanceof PackagePropertiesPart) {
 				PackagePropertiesMarshallerEx marshaller = new PackagePropertiesMarshallerEx();
 				Document packagePropertiesMarshallerDocument = marshaller.marshall(part);
-				// TODO 5
 				//XmlUtil.toFile(packagePropertiesMarshallerDocument, partName);
 				
 				InputStream packagePartIS = new ByteArrayInputStream(XmlUtil.toStr(packagePropertiesMarshallerDocument).getBytes(StandardCharsets.UTF_8));
@@ -849,7 +845,6 @@ public final class ZipPackage extends OPCPackage {
 				PackagePartName relationshipPartName = PackagingURIHelper.getRelationshipPartName(part.getPartName());
 
 				Document relationshipPartDocument = marshallRelationshipPart(part.getRelationships(), relationshipPartName);
-				// TODO 3
 				//System.out.println(XmlUtil.toStr(relationshipPartDocument));
 				String relationshipPartDocumentName = relationshipPartName.getURI().toASCIIString();
 				//XmlUtil.toFile(relationshipPartDocument, TEMP_PATH + relationshipPartDocumentName);

@@ -1,5 +1,5 @@
 package cn.ewsio.report.constant;
 
 public enum ShapeType {
-	TEXT, PICTURE, TABLE, Chart
+	TEXT, PICTURE, TABLE, CHART
 }

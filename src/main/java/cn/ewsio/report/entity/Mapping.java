@@ -38,6 +38,13 @@ public class Mapping {
 		setTexts(list);
 		this.type = ShapeType.TEXT;
 	}
+	
+	public Mapping(String shapeName, Picture picture) {
+		super();
+		this.shapeName = shapeName;
+		setPicture(picture);
+		this.type = ShapeType.PICTURE;
+	}
 
 	public String getShapeName() {
 		return shapeName;
